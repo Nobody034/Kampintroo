@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,8 @@ namespace ClassMetotDemo
 {
     class MusteriManager
     {
+        public static List<Musteri> musteriler = new List<Musteri>();
+
         public void MusteriEkle(Musteri musteri)
         {
             Console.Write("Adınızı giriniz --> ");
@@ -24,32 +26,18 @@ namespace ClassMetotDemo
 
             Console.Write("Adresinizi giriniz --> ");
             musteri.Adress = Console.ReadLine();
+
+            musteriler.Add(musteri);
         }
 
-        public void MusteriListele(List<Musteri> musteriler)
-        {
-            int i = 0;
-            foreach (Musteri musteri in musteriler)
-            {
-                Console.WriteLine("Müsteri[{0}]", i++);
-                Console.WriteLine("-----------------------------------");
-                Console.WriteLine("Müsteri Adı: " + musteri.Ad);
-                Console.WriteLine("Müsteri Soyadı: " + musteri.Soyad);
-                Console.WriteLine("Müsteri Id Numarası: " + musteri.Id);
-                Console.WriteLine("Müsteri Telefonu: " + musteri.Telefon);
-                Console.WriteLine("Müsteri Adresi: " + musteri.Adress);
-                Console.WriteLine();
-            }
-        }
-
-        public void MusteriSil(List<Musteri> musteriler)
+        public void MusteriSil()
         {
             int idNumara = 0;
+            int musteriSayisi = musteriler.Count;
+
 
             Console.Write("Silmek istediğiniz müşterinin ıd numarasını giriniz --> ");
             idNumara = Convert.ToInt32(Console.ReadLine());
-
-            int musteriSayisi = musteriler.Count;
 
             for (int i = 0; i < musteriSayisi; i++)
             {
@@ -77,6 +65,22 @@ namespace ClassMetotDemo
             //        Console.WriteLine("Bu numaraya ait müşteri yok!!!");
             //    }
             //}
+        }
+
+        public void MusteriListele()
+        {
+            int i = 0;
+            foreach (Musteri musteri in musteriler)
+            {
+                Console.WriteLine("Müsteri[{0}]", i++);
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("Müsteri Adı: " + musteri.Ad);
+                Console.WriteLine("Müsteri Soyadı: " + musteri.Soyad);
+                Console.WriteLine("Müsteri Id Numarası: " + musteri.Id);
+                Console.WriteLine("Müsteri Telefonu: " + musteri.Telefon);
+                Console.WriteLine("Müsteri Adresi: " + musteri.Adress);
+                Console.WriteLine();
+            }
         }
     }
 }
