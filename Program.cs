@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,6 @@ namespace ClassMetotDemo
 {
     class Program
     {
-        public static List<Musteri> musteriler = new List<Musteri>();
-        public static int sayac = 0;
-
         static void Main(string[] args)
         {
             girisEkrani();
@@ -16,9 +13,8 @@ namespace ClassMetotDemo
 
         static void girisEkrani()
         {
-
-            Console.WriteLine(
-            @"[B]======================[KAYIT SİSTEMİ]=====================[-][o][x]
+            string kayitSistemi =
+@"[B]======================[KAYIT SİSTEMİ]=====================[-][o][x]
 |                                                                    |
 |                Kayıt Sistemine Hoşgeldiniz!                        |
 |                                                                    |
@@ -27,11 +23,14 @@ namespace ClassMetotDemo
 |              Müşterileri Görüntülemek İçin   (3)                   |
 |                        Çıkış                 (4)                   |
 |                                                                    |
-|====================================================================|"
-            );
+|====================================================================|";
+
+            Console.WriteLine(kayitSistemi);
             Console.WriteLine();
-            int numara = girisKontrol();
-            secimSonuc(numara);
+
+            int secim = girisKontrol();
+
+            secimSonuc(secim);
         }
         static int girisKontrol()
         {
@@ -63,18 +62,17 @@ namespace ClassMetotDemo
                 case 1:
                     Console.WriteLine();
                     Musteri musteri = new Musteri();
-                    musteriler.Add(musteri);
                     musteriManager.MusteriEkle(musteri);
                     cikisKontrol();
                     break;
                 case 2:
                     Console.WriteLine();
-                    musteriManager.MusteriSil(musteriler);
+                    musteriManager.MusteriSil();
                     cikisKontrol();
                     break;
                 case 3:
                     Console.WriteLine();
-                    musteriManager.MusteriListele(musteriler);
+                    musteriManager.MusteriListele();
                     cikisKontrol();
                     break;
                 case 4:
